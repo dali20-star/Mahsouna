@@ -1,0 +1,62 @@
+.scheduler-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.scheduler-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.scheduler-header h1 {
+  color: #2c3e50;
+  margin: 0;
+}
+
+.schedules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.schedule-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.schedule-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.schedule-card-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  flex: 1;
+}
+
+.schedule-info {
+  color: #555;
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+.schedule-info p {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.schedule-info strong {
+  color: #2c3e50;
+}
+
+.schedule-card button {
+  margin-top: auto;
+}

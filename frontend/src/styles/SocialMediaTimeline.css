@@ -1,0 +1,309 @@
+/* Social Media Timeline Styles */
+.social-media-timeline {
+  width: 100%;
+  padding: 6px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.timeline-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 4px;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.timeline-header h2 {
+  font-size: 1rem;
+  margin: 0 0 1px 0;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-subtitle {
+  font-size: 0.65rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Timeline Container */
+.timeline-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  flex: 1;
+  padding-bottom: 4px;
+}
+
+/* Day Column */
+.day-column {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.day-column:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Day Header */
+.day-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.day-name {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.day-number {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-size: 0.6rem;
+  font-weight: 600;
+}
+
+/* Posts Container */
+.posts-container {
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+
+/* Post Card */
+.post-card {
+  background: #f8f9fa;
+  border-left: 2px solid #667eea;
+  border-radius: 4px;
+  padding: 5px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-size: 0.65rem;
+  min-height: 0;
+}
+
+.post-card:hover {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.post-card.edited {
+  border-left-color: #ffc107;
+}
+
+/* Post Header */
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 3px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.platform-icon {
+  font-size: 0.7rem;
+}
+
+.platform-name {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+}
+
+.edited-badge {
+  font-size: 0.5rem;
+  background: #ffc107;
+  color: #000;
+  padding: 1px 3px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+/* Post Content */
+.post-content {
+  margin-bottom: 3px;
+}
+
+.post-caption {
+  margin: 0 0 2px 0;
+  font-size: 0.6rem;
+  line-height: 1.2;
+  color: #555;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Post Hashtags */
+.post-hashtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  margin-bottom: 2px;
+}
+
+.hashtag {
+  font-size: 0.55rem;
+  background: #e7f3ff;
+  color: #0066cc;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+/* Post Footer */
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.55rem;
+  padding-top: 3px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.post-time {
+  color: #999;
+  font-size: 0.5rem;
+}
+
+.post-actions {
+  display: flex;
+  gap: 2px;
+}
+
+.btn-edit,
+.btn-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.55rem;
+  padding: 1px 3px;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.btn-edit {
+  color: #0066cc;
+  background: #e7f3ff;
+}
+
+.btn-edit:hover {
+  background: #cce7ff;
+  transform: scale(1.05);
+}
+
+.btn-delete {
+  color: #dc3545;
+  background: #ffe7e7;
+}
+
+.btn-delete:hover {
+  background: #ffcccc;
+  transform: scale(1.05);
+}
+
+/* No Posts */
+.no-posts {
+  text-align: center;
+  color: #ccc;
+  padding: 6px 4px;
+  font-size: 0.6rem;
+}
+
+/* Timeline Footer */
+.timeline-footer {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.btn-save-all {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-save-all:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn-save-all:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .timeline-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .social-media-timeline {
+    padding: 10px;
+  }
+
+  .timeline-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .timeline-container {
+    grid-template-columns: 1fr;
+  }
+
+  .post-header {
+    font-size: 0.85rem;
+  }
+}
+
+/* Platform-specific colors */
+.post-card.instagram {
+  border-left-color: #E1306C;
+}
+
+.post-card.facebook {
+  border-left-color: #1877F2;
+}
+
+.post-card.twitter {
+  border-left-color: #1DA1F2;
+}
+
+.post-card.linkedin {
+  border-left-color: #0A66C2;
+}

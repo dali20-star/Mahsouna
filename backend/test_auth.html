@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            color: #555;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+        .response-title {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .response-content {
+            color: #555;
+            font-size: 13px;
+            word-break: break-all;
+            max-height: 300px;
+            overflow-y: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+        .success {
+            color: #28a745;
+        }
+        .error {
+            color: #dc3545;
+        }
+        .test-accounts {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        .test-accounts h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .account {
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #555;
+        }
+        .account code {
+            background: white;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .loading {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Authentication Test</h1>
+
+        <div class="test-accounts">
+            <h3>Test Accounts Available:</h3>
+            <div class="account">
+                <strong>Admin:</strong> <code>admin@example.com</code> / <code>Admin@123</code>
+            </div>
+            <div class="account">
+                <strong>Username:</strong> <code>admin</code> / <code>Admin@123</code>
+            </div>
+        </div>
+
+        <!-- Login Section -->
+        <div class="section">
+            <div class="section-title">Login</div>
+            <div class="form-group">
+                <label>Username or Email</label>
+                <input type="text" id="loginUsername" placeholder="admin or admin@example.com" value="admin">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="loginPassword" placeholder="Admin@123" value="Admin@123">
+            </div>
+            <button onclick="testLogin()" id="loginBtn">Login</button>
+            <div id="loginResponse" class="response" style="display: none;">
+                <div class="response-title">Response:</div>
+                <div class="response-content" id="loginResponseContent"></div>
+            </div>
+        </div>
+
+        <!-- Register Section -->
+        <div class="section">
+            <div class="section-title">Register</div>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="regUsername" placeholder="newuser">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="regEmail" placeholder="user@example.com">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="regPassword" placeholder="Pass@123">
+            </div>
+            <div class="form-group">
+                <label>Password Confirm</label>
+                <input type="password" id="regPassword2" placeholder="Pass@123">
+            </div>
+            <button onclick="testRegister()" id="regBtn">Register</button>
+            <div id="regResponse" class="response" style="display: none;">
+                <div class="response-title">Response:</div>
+                <div class="response-content" id="regResponseContent"></div>
+            </div>
+        </div>
+
+        <!-- Token Test Section -->
+        <div class="section">
+            <div class="section-title">Test Profile (requires token)</div>
+            <div class="form-group">
+                <label>Access Token</label>
+                <input type="text" id="tokenInput" placeholder="Paste token from login response">
+            </div>
+            <button onclick="testProfile()" id="profileBtn">Get Profile</button>
+            <div id="profileResponse" class="response" style="display: none;">
+                <div class="response-title">Response:</div>
+                <div class="response-content" id="profileResponseContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:8000/api';
+
+        async function testLogin() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const btn = document.getElementById('loginBtn');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span> Logging in...';
+
+            try {
+                const response = await fetch(`${API_URL}/users/login/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+                const responseDiv = document.getElementById('loginResponse');
+                const responseContent = document.getElementById('loginResponseContent');
+                
+                responseDiv.style.display = 'block';
+                
+                if (response.ok) {
+                    responseContent.innerHTML = `<span class="success">✅ Login Successful!</span>\n\n${JSON.stringify(data, null, 2)}`;
+                    // Auto-fill token
+                    document.getElementById('tokenInput').value = data.access;
+                } else {
+                    responseContent.innerHTML = `<span class="error">❌ Login Failed</span>\n\n${JSON.stringify(data, null, 2)}`;
+                }
+            } catch (error) {
+                const responseDiv = document.getElementById('loginResponse');
+                responseDiv.style.display = 'block';
+                document.getElementById('loginResponseContent').innerHTML = `<span class="error">❌ Error: ${error.message}</span>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Login';
+            }
+        }
+
+        async function testRegister() {
+            const username = document.getElementById('regUsername').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const password2 = document.getElementById('regPassword2').value;
+            const btn = document.getElementById('regBtn');
+
+            if (!username || !email || !password || !password2) {
+                alert('Please fill all fields');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span> Registering...';
+
+            try {
+                const response = await fetch(`${API_URL}/users/register/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, email, password, password2, role: 'creator' })
+                });
+
+                const data = await response.json();
+                const responseDiv = document.getElementById('regResponse');
+                const responseContent = document.getElementById('regResponseContent');
+                
+                responseDiv.style.display = 'block';
+                
+                if (response.ok) {
+                    responseContent.innerHTML = `<span class="success">✅ Registration Successful!</span>\n\n${JSON.stringify(data, null, 2)}`;
+                } else {
+                    responseContent.innerHTML = `<span class="error">❌ Registration Failed</span>\n\n${JSON.stringify(data, null, 2)}`;
+                }
+            } catch (error) {
+                const responseDiv = document.getElementById('regResponse');
+                responseDiv.style.display = 'block';
+                document.getElementById('regResponseContent').innerHTML = `<span class="error">❌ Error: ${error.message}</span>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Register';
+            }
+        }
+
+        async function testProfile() {
+            const token = document.getElementById('tokenInput').value;
+            
+            if (!token) {
+                alert('Please paste a valid token');
+                return;
+            }
+
+            const btn = document.getElementById('profileBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span> Fetching...';
+
+            try {
+                const response = await fetch(`${API_URL}/users/profile/me/`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                const data = await response.json();
+                const responseDiv = document.getElementById('profileResponse');
+                const responseContent = document.getElementById('profileResponseContent');
+                
+                responseDiv.style.display = 'block';
+                
+                if (response.ok) {
+                    responseContent.innerHTML = `<span class="success">✅ Profile Fetched!</span>\n\n${JSON.stringify(data, null, 2)}`;
+                } else {
+                    responseContent.innerHTML = `<span class="error">❌ Failed to fetch profile</span>\n\n${JSON.stringify(data, null, 2)}`;
+                }
+            } catch (error) {
+                const responseDiv = document.getElementById('profileResponse');
+                responseDiv.style.display = 'block';
+                document.getElementById('profileResponseContent').innerHTML = `<span class="error">❌ Error: ${error.message}</span>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Get Profile';
+            }
+        }
+    </script>
+</body>
+</html>

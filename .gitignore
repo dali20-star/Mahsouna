@@ -1,0 +1,87 @@
+# Backend Python
+backend/venv/
+backend/.venv/
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/*.so
+backend/.Python
+backend/build/
+backend/develop-eggs/
+backend/dist/
+backend/downloads/
+backend/eggs/
+backend/.eggs/
+backend/lib/
+backend/lib64/
+backend/parts/
+backend/sdist/
+backend/var/
+backend/wheels/
+backend/.pytest_cache/
+backend/.coverage
+backend/htmlcov/
+backend/db.sqlite3
+backend/db.sqlite3-journal
+backend/migrations/
+backend/.env
+backend/.env.local
+backend/.env.*.local
+
+# Django
+*.log
+local_settings.py
+/media
+/staticfiles
+
+# Frontend Node
+frontend/node_modules/
+frontend/.npm
+frontend/.eslintcache
+frontend/.node_repl_history
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# React build
+frontend/build/
+frontend/dist/
+frontend/.next/
+frontend/out/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.Thumbs.db
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Misc
+*.log
+.cache
+.parcel-cache
+.turbo
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

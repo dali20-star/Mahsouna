@@ -1,0 +1,96 @@
+.platforms-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.platforms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.platforms-header h1 {
+  color: #2c3e50;
+  margin: 0;
+}
+
+.platforms-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.platform-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.platform-card-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  flex: 1;
+}
+
+.platform-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+}
+
+.platform-badge.wordpress {
+  background-color: #0073aa;
+  color: white;
+}
+
+.platform-badge.linkedin {
+  background-color: #0a66c2;
+  color: white;
+}
+
+.platform-badge.twitter {
+  background-color: #1da1f2;
+  color: white;
+}
+
+.platform-badge.email {
+  background-color: #ea4335;
+  color: white;
+}
+
+.platform-info {
+  color: #555;
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+.platform-info p {
+  margin: 8px 0;
+}
+
+.platform-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #ecf0f1;
+}
+
+.platform-actions button {
+  flex: 1;
+  min-width: 100px;
+}
